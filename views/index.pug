@@ -1,0 +1,15 @@
+html
+	head
+		title="Honk Network"
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='author', content='Anton & Jacob')
+		style
+			include honk.css
+	body
+		#container
+			#honk_collection
+			img#honk_me(src="./honk_me.png" alt="Honk" onmouseover="this.src='./hoonkver.png';" onmouseout="this.src='./honk_me.png';")
+
+		script(src="/socket.io/socket.io.js")
+		script
+			include honk.js
