@@ -2,9 +2,12 @@ import express = require('express');
 import http = require('http');
 import io = require('socket.io');
 
-const sock = io(http);
-
 const app = express();
+
+const server = new http.Server(app);
+
+const sock = io(server);
+
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -49,7 +52,5 @@ sock.on('connection', socket => {
 	});
 
 })
-
-const server = new http.Server(app);
 
 server.listen(3000);
