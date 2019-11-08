@@ -6,9 +6,7 @@ const app = express();
 
 const server = new http.Server(app);
 
-const sock = io(server, {
-	path: "/ducktogether/socket.io"
-});
+const sock = io(server);
 
 app.set('views', './views');
 app.set('view engine', 'pug');
