@@ -29,10 +29,28 @@ function safeClamp(num : any, min : number, max : number) : number {
 }
 
 let activeUsers = 0;
+const honkMax = 400;
+const resetMillis = 1000*30;
 
 sock.on('connection', socket => {
+	let resetTime = Date.now();
+	let honkCount = honkMax;
 
 	socket.on('honk', honkData => {
+		const now = Date.now();
+		if (honkCount <= 0) {
+			if (now - resetTime > resetMillis) {
+				honkCount = honkMax;
+				resetTime = now;
+			}
+		}
+
+		if (honkCount <= 0) {
+			return;
+		}
+
+		honkCount--;
+
 		const safeHonk = {
 			x: safeClamp(honkData.x, 0, 1),
 			y: safeClamp(honkData.y, 0, 1),
