@@ -10,7 +10,7 @@ app.set('view engine', 'pug');
 
 app.use(express.static('img'))
 
-app.get('/', function(req, res) {
+app.get(["/", "/index", "/index.html"], function(req, res) {
 	res.render('index');
 });
 
