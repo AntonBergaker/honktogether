@@ -3,7 +3,7 @@ const honkCollection = document.getElementById("honk_collection");
 const activeUsers =  document.getElementById("active_users");
 const volumeButton = document.getElementById("volume");
 const honkOptions = document.getElementById("honk_options");
-const socket = io();
+const socket = io.connect('/socket.io');
 
 volumes = [
     1,
