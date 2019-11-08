@@ -5,12 +5,34 @@
     height: 100%;
 }
 
-#honk_me {
+#honk_collection {
     margin: 0 auto;
     display: inline-block;
+}
+
+#honk_center {
+    text-align: center;
+}
+
+#honk_me {
+    margin: 0 auto;
     cursor: pointer;
     max-width: 80%;
-    width: 100px;
+    width: 120px;
+}
+
+#honk_options {
+    position: absolute;
+    bottom: 5px;
+    text-align: center;
+}
+
+.egg {
+    margin: 2px;
+}
+
+.egg:hover {
+    cursor: pointer;
 }
 
 #honk_collection {
@@ -28,4 +50,21 @@
 .honk.fade {
     opacity: 0;
     transition: opacity 0.2s;
+}
+
+#active_users {
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    position: absolute;
+    top: 5px;
+}
+
+#volume {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    width: 40px;
+}
+
+#volume:hover {
+    cursor: pointer;
 }

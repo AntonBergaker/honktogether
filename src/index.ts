@@ -18,16 +18,35 @@ function clamp(num : number, min : number, max : number) : number {
 	return num <= min ? min : num >= max ? max : num;
 }
 
+function safeClamp(num : any, min : number, max : number) : number {
+	if (num == undefined || isNaN(num)) {
+		return min;
+	}
+	return clamp(num, min, max);
+}
+
+let activeUsers = 0;
+
 sock.on('connection', socket => {
 
 	socket.on('honk', honkData => {
 		const safeHonk = {
-			x: clamp(honkData.x, 0, 1),
-			y: clamp(honkData.y, 0, 1),
-			ang: clamp(honkData.ang, 0, 1)
+			x: safeClamp(honkData.x, 0, 1),
+			y: safeClamp(honkData.y, 0, 1),
+			ang: safeClamp(honkData.ang, 0, 1),
+			color: Math.round(safeClamp(honkData.color, 0, 7))
 		}
 		socket.broadcast.emit('honk', safeHonk)
 	})
+
+
+	activeUsers = clamp(activeUsers+1, 0, 99999999999999);
+	sock.emit('honkers', activeUsers);
+	
+	socket.on('disconnect', () => {
+		activeUsers = clamp(activeUsers-1, 0, 99999999999999);
+		socket.broadcast.emit('honkers', activeUsers);
+	});
 
 })
 
