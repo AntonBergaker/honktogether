@@ -1,10 +1,10 @@
 import express = require('express');
-const app = express();
-const http = require('http').Server(app);
+import http = require('http');
 import io = require('socket.io');
 
 const sock = io(http);
 
+const app = express();
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -50,4 +50,6 @@ sock.on('connection', socket => {
 
 })
 
-http.listen(80);
+const server = new http.Server(app);
+
+server.listen(80);
