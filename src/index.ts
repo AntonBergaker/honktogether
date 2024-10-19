@@ -6,7 +6,12 @@ const app = express();
 
 const server = new http.Server(app);
 
-const sock = new Server(server)
+const sock = new Server(server, {
+	cors: {
+		origin: ["https://honk.bergaker.com", "https://anton.bergaker.com", "http://localhost"],
+		methods: ["GET", "POST"]
+	}
+})
 
 app.set('views', './views');
 app.set('view engine', 'pug');
