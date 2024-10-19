@@ -1,12 +1,12 @@
-import express = require('express');
+import * as express from 'express';
 import http = require('http');
-import io = require('socket.io');
+import { Server } from 'socket.io';
 
 const app = express();
 
 const server = new http.Server(app);
 
-const sock = io(server);
+const sock = new Server(server)
 
 app.set('views', './views');
 app.set('view engine', 'pug');
@@ -71,4 +71,5 @@ sock.on('connection', socket => {
 
 })
 
+console.log("Listening on 3000")
 server.listen(3000);

@@ -4,17 +4,14 @@
     "declaration": true,
     "declarationDir": "dist/@types",
     "declarationMap": true,
-    "jsx": "react",
     "module": "commonjs",
-    "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
     "noImplicitReturns": true,
     "noUnusedLocals": false,
     "outDir": "dist",
     "sourceMap": true,
-    "strict": false,
-    "target": "esnext"
+    "strict": true
   },
   "include": ["src"]
 }
